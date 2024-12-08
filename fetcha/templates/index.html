@@ -63,7 +63,7 @@
                 {{link['identifier'][0]|upper}}{{link['identifier'][1:]}}</a>
             <i class="fa fa-files-o copy_icon"></i>
             <div class="anchor_child" hidden>
-                <img src="data:image/jpeg;base64,{{images['qr_code']}}" width="100" height="100"
+                <img src="data:image/jpeg;base64,{{link['qr_code']}}" width="100" height="100"
                     alt="{{link['identifier']}}">
                 {% if link['whatsapp'] %}
                 <p><b>WhatsApp: </b>
@@ -108,6 +108,11 @@
                         | safe}}</a></p>
                 {% endif %}
                 </p>
+                <form id="delete-form" action="{{ url_for ('create.delete_link', identifier=link['identifier']) }}"
+                    method="post">
+                    <button id="edit-delete" type="submit" onclick="return confirm ('Are you sure?')" value="Delete"><i
+                            class="fa fa-trash" style="margin-right: 10px;"></i>Delete</button>
+                </form>
             </div>
         </div>
         {% endfor %}

@@ -1,10 +1,10 @@
-from flask import request, Blueprint, render_template, g, flash
+from flask import request, Blueprint, render_template, g, flash, redirect
 import qrcode
 import io
 import base64
 from .metadata import metadata
 from .db import get_db
-from sqlalchemy import insert
+from sqlalchemy import insert, delete, select
 import re
 from sqlalchemy.exc import IntegrityError
 from .auth import login_required
@@ -68,3 +68,19 @@ def create():
                 connection.close()
         flash(error)
     return render_template('create.html')
+
+
+@bp.route('/delete/<identifier>', methods=['GET', 'POST'])
+@login_required
+def delete_link(identifier):
+    if request.method == 'GET':
+        return redirect('/')
+    
+    connection = get_db()
+    table = md.tables['links']
+
+    connection.execute(delete(table).where(table.c.identifier == identifier))
+    connection.commit()
+    connection.close()
+
+    return redirect("/")

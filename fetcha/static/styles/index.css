@@ -139,8 +139,19 @@ h3 {
     font-size: 16px;
 }
 
-.anchor_child>p {
+.anchor_child>p,
+#delete-form {
     margin-left: 10px;
+}
+
+#edit-delete {
+    font-family: 'Quicksand';
+    width: fit-content;
+    margin: 2px;
+    padding: 10px;
+    color: #FFFFFF;
+    border-radius: 0.2rem;
+    background-color: #0b182b;
 }
 
 a {
