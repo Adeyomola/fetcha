@@ -39,8 +39,10 @@ def create_app():
         if 'user_id' in session:
             table = md.tables['links']
             connection = get_db()
+
             statement = (select(table).where(table.c.user_id == g.get('user')[0]))
             links = connection.execute(statement).fetchall()
+
             return render_template('index.html', links=links)
         else:
             session.clear()
