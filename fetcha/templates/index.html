@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Cabin">
+    <script src="{{ url_for('static', filename='scripts/index.js')}}" defer></script>
+    <title>Fetcha</title>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    {% if not session %}
+    <h2><span>Customized <span style="color: #0b182b; padding: 30px 30px 30px 10px;">links for your brand!</span></span>
+    </h2>
+    <aside>Features</aside>
+    <div id="features">
+        <div class="features">
+            <p class="anchor_logo"><i class="fa fa-link" style="color: #FFFFFF;"></i>
+            </p>
+            <p class="feature">Custom Links</p>
+            <p class="feature_details">Get a link with your brand name</p>
+        </div>
+        <div class="features">
+            <p class="anchor_logo"> <i class="fa fa-paperclip" style="color: #FFFFFF;"></i>
+            </p>
+            <p class="feature">A Link for Your Links</p>
+            <p class="feature_details">All links for your points of contact in one place</p>
+        </div>
+        <div class="features">
+            <p class="anchor_logo"> <i class="fa fa-calendar" style="color: #FFFFFF;"></i>
+            </p>
+            <p class="feature">Scheduling System</p>
+            <p class="feature_details">Have your customers schedule sessions with you from your link</p>
+        </div>
+        <div class="features">
+            <p class="anchor_logo"> <i class="fa fa-line-chart" style="color: #FFFFFF;"></i>
+            </p>
+            <p class="feature">Insights</p>
+            <p class="feature_details">Get insights on your hits and clicks</p>
+        </div>
+        <div class="features">
+            <p class="anchor_logo"> <i class="fa fa-qrcode" style="color: #FFFFFF;"></i>
+            </p>
+            <p class="feature">QR Code</p>
+            <p class="feature_details">Create interactive experiences with a QR code for your custom link</p>
+        </div>
+    </div>
+    {% endif %}
+    {% if session %}
+    <h3><span>Your <span style="color: #FFFFFF;">links</span></span></h3>
+    <div id="container">
+        {%for link in links%}
+        <div class="anchor" id="custom_link">
+            <p class="anchor_logo"> <span>{{link['identifier'][0]|upper}}</span>
+            </p>
+            <i style="margin: 0 4px;" class="fa fa-caret-right"></i>
+            <a href="https://fetcha.link/{{link['identifier']}}" class="copy">
+                {{link['identifier'][0]|upper}}{{link['identifier'][1:]}}</a>
+            <i class="fa fa-files-o copy_icon"></i>
+            <div class="anchor_child" hidden>
+                <img src="data:image/jpeg;base64,{{link['qr_code']}}" width="100" height="100"
+                    alt="{{link['identifier']}}">
+                {% if link['whatsapp'] %}
+                <p><b>WhatsApp: </b>
+                    <a href="{{ link['whatsapp'] | safe}}" target="_blank">{{
+                        link['whatsapp'] | safe}}</a>
+                </p>
+                {% endif %}
+
+                {% if link['instagram'] %}
+                <p><b>Instagram: </b></i><a href="{{ link['instagram'] | safe}}" target="_blank">{{ link['instagram'] |
+                        safe}}</a></p>
+                {% endif %}
+
+                {% if link['x'] %}
+                <p><b>X (Twitter): </b><a href="{{ link['x'] | safe}}" target="_blank">{{ link['x'] |
+                        safe}}</a></p>
+                {% endif %}
+
+                {% if link['pinterest'] %}
+                <p><b>Pinterest: </b><a href="{{ link['pinterest'] | safe}}" target="_blank">{{ link['pinterest'] |
+                        safe}}</a>
+                </p>
+                {% endif %}
+
+                {% if link['snapchat'] %}
+                <p><b>SnapChat: </b><a href="{{ link['snapchat'] | safe}}" target="_blank">{{ link['snapchat'] |
+                        safe}}</a></p>
+                {% endif %}
+
+                {% if link['facebook'] %}
+                <p><b>Facebook: </b><a href="{{ link['facebook'] | safe}}" target="_blank">{{ link['facebook'] |
+                        safe}}</a></p>
+                {% endif %}
+
+                {% if link['website'] %}
+                <p><b>Website: </b><a href="{{ link['website'] | safe}}" target="_blank">{{ link['website'] | safe}}</a>
+                </p>
+                {% endif %}
+
+                {% if link['linkedin'] %}
+                <p><b>LinkedIn: </b><a href="{{ link['linkedin'] | safe}}" target="_blank">{{ link['linkedin']
+                        | safe}}</a></p>
+                {% endif %}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+
+</html>

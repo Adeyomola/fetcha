@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+
+main {
+    width: 85vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-family: 'Montserrat';
+    min-height: 95vh;
+    border-radius: 5px;
+}
+
+#brand_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#main_picture {
+    border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+    margin-top: 10px;
+}
+
+h1 {
+    margin: 10px;
+    font-family: 'Cabin';
+    text-align: center;
+    filter: invert(1);
+    mix-blend-mode: difference;
+}
+
+h3 {
+    text-align: center;
+    filter: invert(1);
+    mix-blend-mode: difference;
+    font-family: 'Nunito';
+    font-weight: 400;
+}
+
+#link_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
+    margin: 10px;
+    color: #1d242c;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+a:hover {
+    transform: translateX(2px);
+}
+
+i {
+    color: #1d242c;
+}
+
+/* Calendar Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#availableDays {
+    display: block;
+}
+
+#calendar {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #0b182b18;
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px 0;
+    align-self: center;
+}
+
+#monthYear {
+    display: flex;
+    align-self: center;
+    width: 80%;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+#monthYear>i {
+    scale: 1.5;
+}
+
+#daysContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 15px);
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+#dateContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 10px);
+    row-gap: 20px;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+.dates {
+    cursor: pointer;
+}
+
+/* timeslots */
+.time-slots {
+    margin: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 580px) {
+    main {
+        width: 75vw;
+    }
+
+    #main_picture {
+        width: 16vw;
+        height: 16vw;
+    }
+}
+
+@media screen and (min-width: 680px) {
+    main {
+        width: 65vw;
+    }
+
+    #main_picture {
+        width: 14vw;
+        height: 14vw;
+    }
+
+}
+
+@media screen and (min-width: 920px) {
+    main {
+        width: 50vw;
+    }
+
+    #main_picture {
+        width: 10vw;
+        height: 10vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    #main_picture {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    #calendar {
+        width: 70%;
+    }
+}

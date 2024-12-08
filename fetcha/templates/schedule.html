@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="chosen" content="{{ available_days }}">
+    <script src="{{ url_for('static', filename='scripts/schedule.js')}}" defer></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/schedule.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Cabin">
+    <title>Fetcha</title>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    <h3><span>Schedul<span style="color: #FFFFFF;">ing</span></span></h3>
+    <form id="availableDays" method="post">
+        <section>
+            <p><b>Choose Available Days:</b></p>
+            <input type="checkbox" name="Monday" id="" class="availableDays" value="Monday">
+            <label for="Monday">Monday</label>
+            <br>
+            <input type="checkbox" name="Tuesday" id="" class="availableDays" value="Tuesday">
+            <label for="Tuesday">Tuesday</label> <br>
+            <input type="checkbox" name="Wednesday" id="" class="availableDays" value="Wednesday">
+            <label for="Wednesday">Wednesday</label> <br>
+            <input type="checkbox" name="Thursday" id="" class="availableDays" value="Thursday">
+            <label for="Thursday">Thursday</label> <br>
+            <input type="checkbox" name="Friday" id="" class="availableDays" value="Friday">
+            <label for="Friday">Friday</label> <br>
+            <input type="checkbox" name="Saturday" id="" class="availableDays" value="Saturday">
+            <label for="Saturday">Saturday</label> <br>
+            <input type="checkbox" name="Sunday" id="" class="availableDays" value="Sunday">
+            <label for="Sunday">Sunday</label> <br>
+            <button type="submit" id="submit_button"> Submit </button>
+        </section>
+        <section>
+            <p><b>Choose Time Interval:</b></p>
+            <input type="radio" name="30m" id="30m" value="30m">
+            <label for="30m">30-minute Intervals</label> <br>
+            <input type="radio" name="1h" id="1h" value="1h">
+            <label for="1h">1-hour Intervals</label> <br>
+        </section>
+        {% for message in get_flashed_messages() %}
+        <p style="text-align: center; width: max-content; align-self: center;">{{message}}</p>
+        {% endfor %}
+    </form>
+</body>
+
+</html>

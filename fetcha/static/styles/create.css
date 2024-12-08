@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-family: 'Quicksand';
+    font-weight: 100;
+    text-align: center;
+    margin-bottom: 25px;
+    background: url(/static/backdrop2.jpg) top;
+    height: 30vh;
+    color: #9DC15B;
+}
+
+#button_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+box,
+button {
+    display: inline-block;
+    width: fit-content;
+    margin: 0rem 0.5rem;
+    margin-top: 3px;
+    padding: 0.4rem 0.6rem;
+    font: 500 15px 'Nunito';
+    color: #ffffff;
+    background-color: #0b182b;
+    border-radius: 0.2rem;
+    border: 1px solid #1d242c;
+    text-align: center;
+}
+
+button:hover,
+box:hover {
+    scale: 1.05;
+}
+
+box:active {
+    scale: 1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 20px;
+    height: calc(0.6 * 100vh);
+    min-height: fit-content;
+    align-items: center;
+}
+
+p {
+    width: 90vw;
+    font-family: 'Quicksand';
+    font-size: 3.5vw;
+    color: #ffffff;
+    background-color: #0b182b;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+p>input {
+    font-family: 'Quicksand';
+    font-size: inherit;
+    width: 58%;
+    padding: 5px 5px 5px 0;
+    border: none;
+    background-color: #0b182b;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff
+}
+
+p>input:focus {
+    outline: none;
+}
+
+p>input::placeholder {
+    color: #ffffff;
+    font-size: 2.9vw;
+}
+
+aside {
+    font-family: 'Quicksand';
+    font-size: 15px;
+    font-weight: 600;
+    margin: 20px 0;
+    text-align: center;
+}
+
+#submit_button {
+    align-self: center;
+}
+
+form>input {
+    font-family: 'Quicksand';
+    width: 30%;
+    padding: 5px;
+    margin: 10px;
+    align-self: center;
+    border: 1px solid #0b182b;
+    border-radius: 5px;
+}
+
+label {
+    font-family: 'Quicksand';
+    font-size: x-small;
+    width: fit-content;
+    margin: 2px;
+    padding: 10px;
+    color: #1d242c;
+    border-radius: 0.2rem;
+    background-color: #1d242c1a;
+}
+
+#customization_inputs {
+    margin-left: 10px;
+}
+
+#logo {
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+}
+
+/* Preview */
+#preview_section {
+    display: flex;
+}
+
+#preview {
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
+    width: 350px;
+    max-width: 70vw;
+    height: 630px;
+}
+
+main {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-family: 'Montserrat';
+    min-height: 95%;
+    border-radius: 5px;
+}
+
+#brand_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#main_picture {
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+h1 {
+    margin: 10px;
+    font-family: 'Cabin';
+    text-align: center;
+    filter: invert(1);
+    mix-blend-mode: difference;
+}
+
+#preview-tagline {
+    text-align: center;
+    filter: invert(1);
+    mix-blend-mode: difference;
+    font-family: 'Nunito';
+    font-weight: 400;
+}
+
+#link_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.preview-anchor {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
+    margin: 10px;
+    color: #1d242c;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.preview-anchor:hover {
+    transform: translateX(2px);
+}
+
+.preview-icons {
+    color: #1d242c;
+}
+
+/* Copy Modal */
+#copy_modal {
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    padding-top: 30vh;
+    background-color: #ffffffb5;
+}
+
+#copy_modal>input {
+    font-family: 'Quicksand';
+    font-size: inherit;
+    border: none;
+    background-color: #0b182b;
+    margin: 10px;
+    padding: 30px;
+    border-radius: 5px;
+    color: #ffffff;
+    width: 70%;
+}
+
+#copy_modal>span>box {
+    background-color: #9DC15B;
+    color: #0b182b;
+    width: fit-content;
+    cursor: pointer;
+    padding: 30px;
+    border: none;
+    font-family: 'Quicksand';
+}
+
+#close_modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    scale: 3;
+    margin: 10px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 480px) {
+    p {
+        width: 75vw;
+        font-size: 3vw;
+    }
+
+    p>input {
+        width: 57%;
+    }
+
+    p>input::placeholder {
+        font-size: 2.4vw;
+    }
+
+    label {
+        font-size: medium;
+    }
+
+}
+
+@media screen and (min-width: 640px) {
+
+    button,
+    box {
+        font-size: 2.5vw;
+    }
+
+    p {
+        width: 55vw;
+        font-size: 1.95vw;
+    }
+
+    p>input {
+        width: 58%;
+    }
+
+    p>input::placeholder {
+        font-size: 1.8vw;
+    }
+
+    /* preview */
+    #preview {
+        display: flex;
+        visibility: hidden;
+        justify-content: center;
+        width: 400px;
+        max-width: 80vw;
+        height: 720px;
+    }
+
+    #main_picture {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    form {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: baseline;
+        justify-items: center;
+    }
+
+    section {
+        margin: 0 10px;
+    }
+
+    aside {
+        margin: 0;
+    }
+
+    button,
+    box {
+        font-size: 1.5vw;
+    }
+
+    p {
+        width: 39vw;
+        font-size: 1.35vw;
+    }
+
+    p>input {
+        width: 58%;
+    }
+
+    p>input::placeholder {
+        font-size: 1.35vw;
+    }
+
+    #submit_button {
+        position: relative;
+        transform: translate(-10vw, 20vh)
+    }
+}
+
+@media screen and (min-width: 1280px) {
+
+    button,
+    box {
+        font-size: 1.2vw;
+    }
+
+    p {
+        width: 32vw;
+        font-size: 1vw;
+    }
+
+    p>input::placeholder {
+        font-size: 1vw;
+    }
+}

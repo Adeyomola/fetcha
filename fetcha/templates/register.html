@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blossom; the Sun finds its way to you in search of the tales you'd tell.">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Quicksand|Cabin">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+    <title>Register</title>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    <h3><span>Sign <span style="color: #FFFFFF;">Up</span></span></h3>
+    {% for message in get_flashed_messages() %}
+    <p style="text-align: center; width: max-content; align-self: center;">{{message}}</p>
+    {% endfor %}
+    <div id="container">
+        <form method="post" id="register">
+            <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" required>
+            <input type="email" name="confirm_email" id="confirm_email" autocomplete="off" placeholder="Confirm Email"
+                required>
+            <input type="text" name="firstname" id="firstname" autocomplete="off" placeholder="Firstname" required>
+            <input type="text" name="lastname" id="lastname" autocomplete="off" placeholder="Lastname" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"
+                required>
+            <button type="submit" name="register"> Submit </button>
+        </form>
+    </div>
+</body>
+
+</html>

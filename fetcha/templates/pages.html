@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="chosen" content="{{ available_days }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/pages.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Cabin">
+    <!-- <script src="{{ url_for('static', filename='scripts/pages.js')}}" defer></script> -->
+    <title>{{identifier[0]|upper}}{{identifier[1:]}}</title>
+</head>
+
+<body style="background: {{ links['bg_color'] }};">
+    <main style="background: {{ links['fg_color'] }}">
+        <div id="brand_container"><img src="{{ links['image'] }}" alt="{{identifier}}" id="main_picture">
+            <h1>{{identifier[0]|upper}}{{identifier[1:]}}</h1>
+            <h3>{{ links['tagline'] }}</h3>
+        </div>
+        <div id="link_container" style="border: 2px solid #1d242c;">
+            {% if links['whatsapp'] %}
+            <p><a href="{{ links['whatsapp'] | safe}}" target="_blank"><i class="fa fa-whatsapp fa-3x"></i>WhatsApp</a>
+            </p>
+            {% endif %}
+            {% if links['instagram'] %}
+            <p><a href="{{ links['instagram'] | safe}}" target="_blank"><i
+                        class="fa fa-instagram fa-3x"></i>Instagram</a></p>
+            {% endif %}
+            {% if links['x'] %}
+            <p><a href="{{ links['x'] | safe}}" target="_blank"><i class="fa fa-twitter fa-3x"></i>X (Twitter)</a></p>
+            {% endif %}
+            {% if links['pinterest'] %}
+            <p><a href="{{ links['pinterest'] | safe}}" target="_blank"><i
+                        class="fa fa-pinterest fa-3x"></i>Pinterest</a></p>
+            {% endif %}
+            {% if links['snapchat'] %}
+            <p><a href="{{ links['snapchat'] | safe}}" target="_blank"><i class="fa fa-snapchat fa-3x"></i>SnapChat</a>
+            </p>
+            {% endif %}
+            {% if links['facebook'] %}
+            <p><a href="{{ links['facebook'] | safe}}" target="_blank"><i class="fa fa-facebook fa-3x"></i>Facebook</a>
+            </p>
+            {% endif %}
+            {% if links['website'] %}
+            <p><a href="{{ links['website'] | safe}}" target="_blank"><i class="fa fa-chrome fa-3x"></i>Website</a></p>
+            {% endif %}
+            {% if links['linkedin'] %}
+            <p><a href="{{ links['linkedin'] | safe}}" target="_blank"><i class="fa fa-linkedin fa-3x"></i>LinkedIn</a>
+            </p>
+            {% endif %}
+            </p>
+        </div>
+        <!-- <div hidden id="timepopup" style="background-color: #ffffff; width: max-content; top: 180px;">
+            <p style="background-color: #0b182b; width: 100%; padding: 10px; color: #ffffff;">
+                Choose a Time Slot:
+            </p>
+            <p class="time-slots">09:00 - 10:00</p>
+            <p class="time-slots">10:00 - 11:00</p>
+            <p class="time-slots">11:00 - 12:00</p>
+            <p class="time-slots">12:00 - 13:00</p>
+            <p class="time-slots">13:00 - 14:00</p>
+            <p class="time-slots">14:00 - 15:00</p>
+            <p class="time-slots">15:00 - 16:00</p>
+            <p class="time-slots">16:00 - 17:00</p>
+        </div>
+        <form action="" method="post" id="form">
+            <div id="calendar">
+                <div id="monthYear">
+                    <i class="fa fa-caret-left"></i>
+                    <div class="month"></div>
+                    <i class="fa fa-caret-right"></i>
+                </div>
+                <div id="daysContainer">
+                    <div class="days">Mo</div>
+                    <div class="days">Tu</div>
+                    <div class="days">We</div>
+                    <div class="days">Th</div>
+                    <div class="days">Fr</div>
+                    <div class="days">Sa</div>
+                    <div class="days">Su</div>
+                </div>
+                <div id="dateContainer">
+                </div>
+            </div> -->
+        </form>
+    </main>
+
+</body>
+
+</html>

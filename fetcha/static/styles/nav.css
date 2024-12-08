@@ -1,0 +1,82 @@
+    /* header */
+    header {
+        display: grid;
+        grid-template-columns: auto auto;
+        padding: 0.5rem;
+        background-color: #0b182b;
+        padding: 16px 0;
+    }
+
+    #title {
+        font: 1.3rem 'Cabin';
+        font-weight: 600;
+        color: #9DC15B;
+        text-decoration: none;
+        margin-left: 2vw;
+    }
+
+    /* nav */
+    nav {
+        display: flex;
+        justify-content: right;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    nav a {
+        font: 2.8vw 'Quicksand';
+        font-weight: 500;
+        color: #FFFFFF;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    nav a:hover {
+        scale: 1.05;
+        color: #9DC15B;
+    }
+
+
+    @media screen and (min-width: 640px) {
+        nav a {
+            font-size: 1.8vw;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        #title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-left: 6.3vw;
+        }
+
+        nav a {
+            font-size: 1.3vw;
+        }
+    }
+
+    @media screen and (min-width: 1280px) {
+        #title {
+            font-weight: 600;
+        }
+
+        header {
+            background-size: 100% 200%;
+        }
+
+        nav a {
+            font-size: 1vw;
+        }
+    }
+
+    @media screen and (min-width: 480px) and (max-width: 1023px) and (orientation: landscape) {
+        #title {
+            font-weight: 600;
+        }
+
+        nav a {
+            font-size: 1.5vw;
+        }
+    }

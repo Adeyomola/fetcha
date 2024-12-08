@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Quicksand';
+}
+
+form {
+    margin: 30px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-family: 'Quicksand';
+    font-weight: 100;
+    text-align: center;
+    margin-bottom: 25px;
+    background: url(/static/backdrop2.jpg) top;
+    height: 30vh;
+    color: #9DC15B;
+}
+
+button {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 10px;
+    padding: 0.4rem 0.6rem;
+    font: 500 12px 'Nunito';
+    color: #ffffff;
+    background-color: #0b182b;
+    border-radius: 0.2rem;
+    border: 1px solid #1d242c;
+    text-align: center;
+}
+
+
+@media screen and (min-width: 480px) {
+    p {
+        width: 75vw;
+        font-size: 3vw;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    p {
+        width: 55vw;
+        font-size: 1.95vw;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    p {
+        width: 39vw;
+        font-size: 1.5vw;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    p {
+        width: 30vw;
+        font-size: 1.2vw;
+    }
+}

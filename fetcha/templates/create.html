@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='scripts/create.js')}}" defer></script>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/create.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Cabin">
+    <title>Fetcha</title>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    <h3><span>Create a new <span style="color: #FFFFFF;">link</span></span></h3>
+    {% for message in get_flashed_messages() %}
+    <p style="text-align: center; width: max-content; align-self: center;">{{message}}</p>
+    {% endfor %}
+    {% if custom_link %}
+    <div id="copy_modal"><input type="text" name="" id="custom_link" value="{{custom_link}}"><span>
+            <box onclick="copy()">
+                copy</box>
+        </span>
+        <span id="close_modal">
+            &times;
+        </span>
+    </div>
+    {% endif %}
+    <form action="" method="post" id="form">
+        <section style="display: flex; flex-direction: column;">
+            <div id="button_container">
+                <box class="linkbuttons" id="whatsapp"><i class="fa fa-whatsapp"></i></box>
+                <box class="linkbuttons" id="instagram"><i class="fa fa-instagram"></i></box>
+                <box class="linkbuttons" id="x"><i class="fa fa-twitter"></i></box>
+                <box class="linkbuttons" id="pinterest"><i class="fa fa-pinterest"></i></box>
+                <box class="linkbuttons" id="snapchat"><i class="fa fa-snapchat"></i></box>
+                <box class="linkbuttons" id="facebook"><i class="fa fa-facebook"></i></box>
+                <box class="linkbuttons" id="website"><i class="fa fa-chrome"></i></box>
+                <box class="linkbuttons" id="linkedin"><i class="fa fa-linkedin"></i></box>
+            </div>
+            <p style="text-align: center; color: #9DC15B;">https://fetcha.link/<input type="text" name="identifier"
+                    id="identifier" placeholder="enter a custom name for your link">
+            </p>
+            <p>Enter a Tagline: <input type="text" name="tagline" id="tagline" value=""></p>
+            <p id="whatsapp_p" hidden>Enter WhatsApp URL: <input type="url" name="whatsapp" value=""></p>
+            <p id="instagram_p" hidden>Enter Instagram URL: <input type="url" name="instagram" value="">
+            </p>
+            <p id="x_p" hidden>Enter X URL: <input type="url" name="x"></p>
+            <p id="pinterest_p" hidden>Enter Pinterest URL: <input type="url" name="pinterest"></p>
+            <p id="snapchat_p" hidden>Enter SnapChat URL: <input type="url" name="snapchat"></p>
+            <p id="facebook_p" hidden>Enter Facebook URL: <input type="url" name="facebook"></p>
+            <p id="website_p" hidden>Enter Website URL: <input type="url" name="website"></p>
+            <p id="linkedin_p" hidden>Enter LinkedIn URL: <input type="url" name="linkedin"></p>
+        </section>
+        <!-- Preview -->
+        <div id="preview_section">
+            <div style="display: flex; flex-direction: column; align-items: center;" id="customization_inputs">
+                <!-- preview customization inputs -->
+                <aside>Customize:</aside>
+                <label for="background-color">Background Color: <input type="color" name="background-color"
+                        id="background-color" value="#1d242c"></label>
+
+                <label for="foreground-color">Foreground Color: <input type="color" name="foreground-color"
+                        id="foreground-color" value="#ffffff"></label>
+                <label for="logo">Add Logo Image<input type="file" name="logo" id="logo" accept=".png, .jpg, .jpeg"></label>
+                <input type="text" name="image_base64" id="image_base64" style="opacity: 0;" hidden>
+                <button type="submit" id="submit_button"> Save </button>
+            </div>
+            <section>
+                <aside><i style="margin: 0 4px;" class="fa fa-caret-right"></i>Preview your page:</aside>
+                <div id="preview" style="background: black; margin: 10px; border-radius: 5px;" hidden>
+                    <main id="preview-foreground" style="background: white">
+                        <div id="brand_container"><img src="/static/placeholder.webp" width="90px" height="90px"
+                                alt="Third" id="main_picture">
+                            <h1 id="preview-title"></h1>
+                            <div id="preview-tagline"></div>
+                        </div>
+                        <div id="link_container" style="border: 2px solid #1d242c;">
+                            <div hidden id="whatsapp_i"><a href="" class="preview-anchor"><i
+                                        class="fa fa-whatsapp fa-3x preview-icons"></i>WhatsApp</a>
+                            </div>
+                            <div hidden id="instagram_i"><a href="" class="preview-anchor"><i
+                                        class="fa fa-instagram fa-3x preview-icons"></i>Instagram</a>
+                            </div>
+                            <div hidden id="x_i"><a href="" class="preview-anchor"><i
+                                        class="fa fa-twitter fa-3x preview-icons"></i>X
+                                    (Twitter)</a></div>
+                            <div hidden id="pinterest_i"><a href="" class="preview-anchor"><i
+                                        class="fa fa-pinterest fa-3x preview-icons"></i>Pinterest</a>
+                            </div>
+                            <div hidden id="snapchat_i"><a href="" class="preview-anchor"><i
+                                        class="fa fa-snapchat fa-3x preview-icons"></i>SnapChat</a>
+                            </div>
+                            <div hidden id="facebook_i"><a href="" class="preview-anchor"><i
+                                        class="fa fa-facebook fa-3x preview-icons"></i>Facebook</a>
+                            </div>
+                            <div hidden id="website_i"><a href="" class="preview-anchor"><i
+                                        class="fa fa-chrome fa-3x preview-icons"></i>Website</a>
+                            </div>
+                            <div hidden id="linkedin_i"><a href="" class="preview-anchor"><i
+                                        class="fa fa-linkedin fa-3x preview-icons"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </section>
+        </div>
+    </form>
+</body>
+
+</html>

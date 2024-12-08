@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/nav.css') }}">
+<header>
+    <a id="title" title="home" href="/">
+        fetcha.link
+    </a>
+    <nav>
+        {% if not session %}
+        <a href="/#features" title="Features">
+            Features</a>
+        <a href="" title="Pricing">
+            Pricing</a>
+        <a href="/login">
+            Log In</a>
+        <a href="/signup">
+            Sign Up</a>
+        {% endif %}
+        {% if session %}
+        <a href="/create">
+            Create</a>
+        <!-- <a href="/schedule">
+            Scheduling</a> -->
+        <a href="/logout" title="posts">
+            Log Out</a>
+        {% endif %}
+    </nav>
+</header>
