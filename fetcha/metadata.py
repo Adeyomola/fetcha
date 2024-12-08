@@ -19,7 +19,7 @@ def metadata():
     Column('user_id', Integer, ForeignKey('users.id'), nullable=False),
     Column('identifier', String(255), unique=True),
     Column('tagline', String(150)),
-    Column('qr_code', VARCHAR(355), unique=True),
+    Column('qr_code', VARCHAR(3000), unique=True),
     Column('whatsapp', String(255)),
     Column('instagram', String(255)),
     Column('x', String(255)),
