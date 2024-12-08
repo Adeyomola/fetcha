@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for fetcha-mysql-black-grass-6379 on 2024-12-08T20:13:12+01:00
+# fly.toml app configuration file generated for fetcha-mysql on 2024-12-08T21:07:46+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'fetcha-mysql-black-grass-6379'
+app = 'fetcha-mysql'
 primary_region = 'sea'
 
 [build]
