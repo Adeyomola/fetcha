@@ -7,11 +7,13 @@ from .db import get_db
 from sqlalchemy import insert
 import re
 from sqlalchemy.exc import IntegrityError
+from .auth import login_required
 
 bp = Blueprint('create', __name__)
 md = metadata()
 
 @bp.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     if request.method == 'POST':
         error = None
