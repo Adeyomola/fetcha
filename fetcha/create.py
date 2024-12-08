@@ -29,7 +29,6 @@ def create():
         linkedin = request.form['linkedin']
         background_color = request.form['background-color']
         foreground_color = request.form['foreground-color']
-
         image_base64 = request.form.get('image_base64')
 
         if identifier == "":
@@ -46,7 +45,6 @@ def create():
         qr_code = base64.b64encode(qr_code).decode()
 
         table = md.tables['links']
-        image_table = md.tables['images']
         connection = get_db()
 
         if error is None:
@@ -55,8 +53,7 @@ def create():
                                                     whatsapp=whatsapp, instagram=instagram, x=x,
                                                     pinterest=pinterest, snapchat=snapchat,facebook=facebook,
                                                     website=website, linkedin=linkedin, bg_color=background_color,
-                                                    fg_color=foreground_color), 
-                                                    insert(image_table).values(identifier=identifier, image=image_base64))
+                                                    fg_color=foreground_color, image=image_base64))
                 connection.execute(statement)
                 connection.commit()
                 return render_template('create.html', custom_link=f"https://fetcha.link/{identifier}")

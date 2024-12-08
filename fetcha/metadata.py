@@ -18,7 +18,7 @@ def metadata():
     Column('id', Integer, primary_key = True, autoincrement=True),
     Column('user_id', Integer, ForeignKey('users.id'), nullable=False),
     Column('identifier', String(255), unique=True),
-    Column('qr_code', String(1500)),
+    Column('qr_code', String(3000)),
     Column('tagline', String(150)),
     Column('whatsapp', String(255)),
     Column('instagram', String(255)),
@@ -30,17 +30,12 @@ def metadata():
     Column('linkedin', String(255)),
     Column('bg_color', String(20)),
     Column('fg_color', String(20)),
+    Column('image', String(3000)),
     )
     schedule = Table(
     'schedule', md,
     Column('id', Integer, primary_key = True, autoincrement=True),
     Column('user_id', Integer, ForeignKey('users.id'), nullable=False),
     Column('available_days', VARCHAR(355), unique=True, default="Monday, Tuesday, Wednesday, Thursday, Friday"),
-    )
-    images = Table(
-    'images', md,
-    Column('id', Integer, primary_key = True, autoincrement=True),
-    Column('identifier', String(255), unique=True),
-    Column('image', String(3000)),
     )
     return md
