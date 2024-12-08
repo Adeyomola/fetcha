@@ -65,7 +65,6 @@ form {
     flex-direction: column;
     justify-content: space-evenly;
     margin: 20px;
-    height: calc(0.6 * 100vh);
     min-height: fit-content;
     align-items: center;
 }
