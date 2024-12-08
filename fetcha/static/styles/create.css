@@ -91,6 +91,11 @@ p>input {
     border-bottom: 1px solid #ffffff
 }
 
+p>input[type] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
 p>input:focus {
     outline: none;
 }
