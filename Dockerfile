@@ -11,7 +11,7 @@ WORKDIR /this/fetcha
 RUN pip install -r requirements.txt && chmod +x /usr/local/bin/conf_editor.sh
 
 WORKDIR /this
-ENTRYPOINT conf_editor.sh && flask run --debug -p 80 \
+ENTRYPOINT conf_editor.sh && flask run --debug -p 80 --host=0.0.0.0 \
     # && flask db-init \
     # && mod_wsgi-express start-server wsgi.py --user adeyomola --group adeyomola --port 80 --processes 2 --envvars .env \
     && tail -f /dev/null
