@@ -24,4 +24,4 @@ def goto(identifier):
         abort (404, f'Link does not exist')
     else:
         identifier = links[2].replace("-", " ")
-    return render_template('pages.html', links=links, identifier=identifier, available_days = available_days[2])
+    return render_template('pages.html', links=links, identifier=identifier) #available_days = available_days[2]
