@@ -52,7 +52,7 @@ def login():
         )
         user = connection.execute(statement)
         user = Result.fetchone(user)
-
+        
         if user is None:
             error = 'Incorrect email address or password'
         elif not check_password_hash(user[4], password):
