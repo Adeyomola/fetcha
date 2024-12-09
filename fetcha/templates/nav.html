@@ -4,7 +4,7 @@
         fetcha.link
     </a>
     <nav>
-        {% if not session %}
+        {% if not session['user_id'] %}
         <a href="/#features" title="Features">
             Features</a>
         <a href="" title="Pricing">
