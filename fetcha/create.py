@@ -81,7 +81,7 @@ def delete_link(identifier):
     connection = get_db()
     table = md.tables['links']
     
-    image = connection.execute((select(table.c.image).where(table.c.identifier == identifier))).fetchone()[15]
+    image = connection.execute((select(table.c.image).where(table.c.identifier == identifier))).fetchone()[0]
 
     if image:
         Upload.delete_file(image)
