@@ -20,6 +20,8 @@ function validatePasswordComponent(e) {
     );
     password.reportValidity();
     e.preventDefault();
+  } else {
+    password.setCustomValidity("");
   }
 }
 password.onchange = validatePassword;
