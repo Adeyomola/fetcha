@@ -14,6 +14,9 @@
 <body>
     {% include 'nav.html' %}
     <h3><span>Log <span style="color: #FFFFFF;">In</span></span></h3>
+    {% for message in get_flashed_messages() %}
+    <p style="text-align: center; width: max-content; align-self: center;">{{message}}</p>
+    {% endfor %}
     <div id="container">
         <form method="post">
             <input type="text" name="email" id="email" autocomplete="off" required placeholder="Email">
