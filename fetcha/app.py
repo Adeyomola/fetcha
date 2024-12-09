@@ -10,7 +10,7 @@ db_path = "./data"
 
 secret_key=os.environ.get('SECRET_KEY')
 
-# db_password=up.quote_plus(os.environ.get('DB_PASSWORD'))
+db_password=up.quote_plus(os.environ.get('DB_PASSWORD'))
 db_user=os.environ.get('DB_USER')
 host=os.environ.get('DB_HOST')
 db_name=os.environ.get('DATABASE')
@@ -18,9 +18,8 @@ db_name=os.environ.get('DATABASE')
 def create_app():
     app=Flask(__name__)
     app.config.from_mapping(
-        # ENGINE= create_engine(f"mysql://{db_user}:{db_password}@{host}/{db_name}"),
-        ENGINE= create_engine(f"sqlite:///{db_path}"),
-        SECRET_KEY='secret_key'
+        ENGINE= create_engine(f"mysql://{db_user}:{db_password}@{host}/{db_name}"),
+        SECRET_KEY=secret_key
     )
 
     from . import auth
