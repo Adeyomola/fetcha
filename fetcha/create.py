@@ -32,6 +32,7 @@ def create():
         foreground_color = request.form['foreground-color']
         image_url = Upload.upload_file(Upload)
 
+
         if identifier == "":
             error = "Enter a custom name for your link"
         elif whatsapp == "" and instagram == "" and x == "" and pinterest == "" and \

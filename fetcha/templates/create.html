@@ -28,7 +28,7 @@
         </span>
     </div>
     {% endif %}
-    <form action="" method="post" id="form">
+    <form action="" method="post" id="form" enctype=multipart/form-data>
         <section style="display: flex; flex-direction: column;">
             <div id="button_container">
                 <box class="linkbuttons" id="whatsapp"><i class="fa fa-whatsapp"></i></box>
@@ -64,7 +64,8 @@
 
                 <label for="foreground-color">Foreground Color: <input type="color" name="foreground-color"
                         id="foreground-color" value="#ffffff"></label>
-                <label for="logo">Add Logo Image<input type="file" name="file" id="logo" accept=".png, .jpg, .jpeg"></label>
+                <label for="logo">Add Logo Image<input type="file" id="logo" name="file"
+                        accept="image/png, image/jpeg, image/webp"></label>
                 <button type="submit" id="submit_button"> Save </button>
             </div>
             <section>
