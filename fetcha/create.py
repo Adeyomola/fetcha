@@ -80,6 +80,11 @@ def delete_link(identifier):
     
     connection = get_db()
     table = md.tables['links']
+    
+    image = connection.execute((select(table.c.image).where(table.c.identifier == identifier))).fetchone()
+
+    if image:
+        Upload.delete_file(image)
 
     connection.execute(delete(table).where(table.c.identifier == identifier))
     connection.commit()
