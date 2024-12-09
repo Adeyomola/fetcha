@@ -69,7 +69,6 @@ logo.addEventListener("input", () => {
 
   reader.onloadend = () => {
     main_picture.setAttribute("src", reader.result);
-    image_base64.value = reader.result;
   };
 });
 
