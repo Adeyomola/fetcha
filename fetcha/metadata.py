@@ -30,7 +30,7 @@ def metadata():
     Column('linkedin', String(255)),
     Column('bg_color', String(20)),
     Column('fg_color', String(20)),
-    Column('image', String(3000)),
+    Column('image', String(355)),
     )
     schedule = Table(
     'schedule', md,

@@ -8,6 +8,7 @@ from sqlalchemy import insert, delete, select
 import re
 from sqlalchemy.exc import IntegrityError
 from .auth import login_required
+from .uploads import Upload
 
 bp = Blueprint('create', __name__)
 md = metadata()
@@ -29,7 +30,7 @@ def create():
         linkedin = request.form['linkedin']
         background_color = request.form['background-color']
         foreground_color = request.form['foreground-color']
-        image_base64 = request.form.get('image_base64')
+        image_url = Upload.upload_file(Upload)
 
         if identifier == "":
             error = "Enter a custom name for your link"
@@ -53,7 +54,7 @@ def create():
                                                     whatsapp=whatsapp, instagram=instagram, x=x,
                                                     pinterest=pinterest, snapchat=snapchat,facebook=facebook,
                                                     website=website, linkedin=linkedin, bg_color=background_color,
-                                                    fg_color=foreground_color, image=image_base64))
+                                                    fg_color=foreground_color, image=image_url))
                 connection.execute(statement)
                 connection.commit()
                 return render_template('create.html', custom_link=f"https://fetcha.link/{identifier}")
