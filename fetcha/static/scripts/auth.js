@@ -11,13 +11,15 @@ function validatePassword(e) {
   }
 }
 
-function validatePasswordComponent() {
+function validatePasswordComponent(e) {
   const regex = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]{6,}$/g;
 
   if (!password.value.match(regex)) {
-    alert(
+    password.setCustomValidity(
       "Use at least six characters, an uppercase letter, a number, and a special character"
     );
+    password.reportValidity();
+    e.preventDefault();
   }
 }
 password.onchange = validatePassword;
