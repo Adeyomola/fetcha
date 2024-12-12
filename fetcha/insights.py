@@ -35,4 +35,4 @@ def insights(identifier='third'):
     counts = connection.execute(select_counts).fetchall()
 
 
-    return render_template('insights.html', identifier=identifier,  countries=countries) #available_days = available_days[2]
+    return render_template('insights.html', identifier=identifier, counts = counts,  countries=countries) #available_days = available_days[2]
