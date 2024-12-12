@@ -34,7 +34,7 @@ def pages(identifier):
         connection.execute(text(query))
     elif location in countries[0][0]:
         count = count + 1
-        query = f'UPDATE insights SET {location} = + 1 WHERE identifier = "{identifier}";'
+        query = f'UPDATE insights SET {location} = {count} WHERE identifier = "{identifier}";'
         connection.execute(text(query))
         connection.commit()
 
