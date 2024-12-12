@@ -18,20 +18,21 @@ def pages(identifier):
     insights_table = md.tables['insights']
 
         # checks if insights has identifier and inserts if it doesn't
-    if not connection.execute(select(insights_table.c.identifier)).fetchone():
-        connection.execute((insert(insights_table).values(identifier=identifier)))
-        connection.commit()
+    # if not connection.execute(select(insights_table.c.identifier)).fetchone():
+    #     connection.execute((insert(insights_table).values(identifier=identifier)))
+    #     connection.commit()
     
     select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
     countries = connection.execute(select_countries).fetchall()
-
-    if location not in countries[0]:
-        query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
-        connection.execute(text(query))
-    elif location in countries[0]:
-        query = f'UPDATE insights SET {location} = + 1 WHERE identifier = {identifier};'
-        connection.execute(text(query))
-        connection.commit()
+    
+    # if location not in countries[0]:
+    #     print ('True')
+    #     query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
+    #     connection.execute(text(query))
+    # elif location in countries[0]:
+    #     query = f'UPDATE insights SET {location} = + 1 WHERE identifier = {identifier};'
+    #     connection.execute(text(query))
+    #     connection.commit()
 
 
     # schedule_table = md.tables['schedule']
