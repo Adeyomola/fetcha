@@ -25,7 +25,7 @@ def pages(identifier):
     select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
     countries = connection.execute(select_countries).fetchall()
 
-    count = connection.execute(text(f"SELECT {location} FROM 'insights' WHERE identifier = '{identifier}'")).fetchone()
+    count = connection.execute(text(f"SELECT {location} FROM insights WHERE identifier = '{identifier}'")).fetchone()
 
     if location not in countries[0][0]:
         print ('True')
