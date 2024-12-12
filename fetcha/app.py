@@ -31,6 +31,9 @@ def create_app():
     from . import pages
     app.register_blueprint(pages.bp)
 
+    from . import insights
+    app.register_blueprint(insights.bp)
+
     from . import schedule
     app.register_blueprint(schedule.bp)
 
