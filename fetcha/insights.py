@@ -24,7 +24,7 @@ def insights(identifier='third'):
     countries = connection.execute(select_countries).fetchall()[0]
 
     countries = list(countries)
-    countries.remove('identifier')
+    # countries.remove('identifier')
 
 
 
