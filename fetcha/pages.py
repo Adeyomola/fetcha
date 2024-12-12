@@ -20,7 +20,6 @@ def pages(identifier):
     countries = connection.execute(select_countries).fetchall()
 
     if location not in countries[0][0]:
-        print ('True')
         query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
         connection.execute(text(query))
     elif location in countries[0][0]:
@@ -45,4 +44,4 @@ def pages(identifier):
         abort (404, f'Link does not exist')
     else:
         identifier = links[2].replace("-", " ")
-    return render_template('pages.html', links=links, identifier=identifier, count=count) #available_days = available_days[2]
+    return render_template('pages.html', links=links, identifier=identifier) #available_days = available_days[2]
