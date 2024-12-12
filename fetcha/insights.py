@@ -29,10 +29,10 @@ def insights(identifier='third'):
     countries = countries.split()
     countries.remove('identifier')
 
+    countries = ','.join(countries)
+
+    # select_counts = text(f"SELECT {countries} FROM insights WHERE identifier='{identifier}'")
+    # counts = connection.execute(select_counts).fetchall()
 
 
-    select_counts = text(f"SELECT {countries} FROM insights WHERE identifier='{identifier}'")
-    counts = connection.execute(select_counts).fetchall()
-
-
-    return render_template('insights.html', identifier=identifier, counts = counts,  countries=countries) #available_days = available_days[2]
+    return render_template('insights.html', identifier=identifier, countries=countries) #available_days = available_days[2]
