@@ -21,16 +21,13 @@ def pages(identifier):
     if not connection.execute(select(insights_table.c.identifier)).fetchone():
         connection.execute((insert(insights_table).values(identifier=identifier)))
         connection.commit()
-        
-
-    select_countries = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'user_data'  AND TABLE_NAME = 'insights';"
+    
+    # select_countries = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'user_data'  AND TABLE_NAME = 'insights';"
+    select_countries = "select group_concat(`column_name` separator ',') from information_schema.columns where table_name = 'insights';"
+    print(select_countries)
 
     countries = connection.execute(text(select_countries)).fetchall()
     print(countries)
-    # columns = []
-    # for c in countries:
-       
-
 
     # if location not in countries:
     #     print(location)
@@ -54,4 +51,4 @@ def pages(identifier):
         abort (404, f'Link does not exist')
     else:
         identifier = links[2].replace("-", " ")
-    return render_template('pages.html', links=links, identifier=identifier) #available_days = available_days[2]
+    return render_template('pages.html', links=links, identifier=identifier, countries=countries) #available_days = available_days[2]
