@@ -22,21 +22,16 @@ def pages(identifier):
         connection.execute((insert(insights_table).values(identifier=identifier)))
         connection.commit()
     
-    # select_countries = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'user_data'  AND TABLE_NAME = 'insights';"
     select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
-    print(select_countries)
-
     countries = connection.execute(select_countries).fetchall()
-    print(countries)
 
-    # if location not in countries:
-    #     print(location)
-    #     query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
-    #     connection.execute(text(query))
-        # elif location in columns:
-        #     query = f'UPDATE insights SET {location} = + 1 WHERE identifier = {identifier};'
-        #     connection.execute(text(query))
-        #     connection.commit()
+    if location not in countries[0]:
+        query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
+        connection.execute(text(query))
+    elif location in countries[0]:
+        query = f'UPDATE insights SET {location} = + 1 WHERE identifier = {identifier};'
+        connection.execute(text(query))
+        connection.commit()
 
 
     # schedule_table = md.tables['schedule']
