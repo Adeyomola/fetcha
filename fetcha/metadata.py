@@ -40,7 +40,6 @@ def metadata():
     )
     insights = Table(
     'insights', md,
-    Column('user_id', Integer, ForeignKey('users.id'), nullable=False),
     Column('identifier', String(255), unique=True),
     )
     return md

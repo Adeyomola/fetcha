@@ -22,7 +22,7 @@ def pages(identifier):
     insights_table = md.tables['insights']
 
     if not connection.execute(select(insights_table.c.identifier)).fetchone():
-        statement = (insert(insights_table).values(user_id=g.get('user')[0], identifier=identifier))
+        statement = (insert(insights_table).values(identifier=identifier))
         connection.execute(statement)
     else:
         return
