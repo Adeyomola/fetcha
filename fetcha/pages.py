@@ -13,27 +13,33 @@ md = metadata()
 def pages(identifier):    
     connection = get_db()
 
-    # # location stuff
-    # location = GetLocation.get_location()
-    # insights_table = md.tables['insights']
+    # location stuff
+    location = GetLocation.get_location()
+    insights_table = md.tables['insights']
 
-    #     # checks if insights has identifier and inserts if it doesn't
-    # if not connection.execute(select(insights_table.c.identifier)).fetchone():
-    #     connection.execute((insert(insights_table).values(identifier=identifier)))
-    #     connection.commit()
+        # checks if insights has identifier and inserts if it doesn't
+    if not connection.execute(select(insights_table.c.identifier)).fetchone():
+        connection.execute((insert(insights_table).values(identifier=identifier)))
+        connection.commit()
         
 
-    # select_countries = (select(insights_table).where(insights_table.c.identifier == identifier))
-    # countries = connection.execute(select_countries).fetchone()
-    
+    select_countries = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'user_data'  AND TABLE_NAME = 'insights';"
+
+    countries = connection.execute(text(select_countries)).fetchall()
+    print(countries)
+    # columns = []
+    # for c in countries:
+       
+
+
     # if location not in countries:
-    #     print('True')
+    #     print(location)
     #     query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
     #     connection.execute(text(query))
-    # else:
-    #     query = f'UPDATE insights SET {location} = {location} + 1 WHERE identifier = {identifier};'
-    #     connection.execute(text(query))
-    #     connection.commit()
+        # elif location in columns:
+        #     query = f'UPDATE insights SET {location} = + 1 WHERE identifier = {identifier};'
+        #     connection.execute(text(query))
+        #     connection.commit()
 
 
     # schedule_table = md.tables['schedule']
