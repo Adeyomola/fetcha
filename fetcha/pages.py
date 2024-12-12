@@ -17,6 +17,7 @@ def pages(identifier):
     location = GetLocation.get_location()
     insights_table = md.tables['insights']
 
+        # checks if insights has identifier and inserts if it doesn't
     if not connection.execute(select(insights_table.c.identifier)).fetchone():
         connection.execute((insert(insights_table).values(identifier=identifier)))
         connection.commit()
@@ -24,19 +25,17 @@ def pages(identifier):
 
     select_countries = (select(insights_table).where(insights_table.c.identifier == identifier))
     countries = connection.execute(select_countries).fetchone()
-
-    print(connection.execute(select(insights_table.c.identifier)).fetchone())
-    print(countries)
     
-    if location in countries:
-        query = f'UPDATE insights SET {location} = {location} + 1 WHERE identifier = {identifier};'
-        connection.execute(text(query))
-        connection.commit()
-    else:
+    if location not in countries:
         query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
         connection.execute(text(query))
         connection.commit()
         connection.close()
+    else:
+        query = f'UPDATE insights SET {location} = {location} + 1 WHERE identifier = {identifier};'
+        connection.execute(text(query))
+        connection.commit()
+
 
     # schedule_table = md.tables['schedule']
     # get_available_days = (select(schedule_table).join_from(md.tables['users'], schedule_table))
