@@ -18,4 +18,4 @@ class GetLocation:
         data = ip_info.json()
         # location = data['country']
         
-        return f'{request.headers.getlist("X-Forwarded-For")[0]}'
+        return f'{request.headers.get("X-Forwarded-For")[0]}'
