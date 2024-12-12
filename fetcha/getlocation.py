@@ -17,4 +17,4 @@ class GetLocation:
         data = ip_info.json()
         # location = data['country']
         
-        return data
+        return f'{ip}{ip_info}'
