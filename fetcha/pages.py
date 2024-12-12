@@ -27,7 +27,6 @@ def pages(identifier):
 
     count = connection.execute(text(f"SELECT {location} FROM 'insights' WHERE identifier = '{identifier}'")).fetchone()
 
-    print(countries[0][0])
     if location not in countries[0][0]:
         print ('True')
         query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
