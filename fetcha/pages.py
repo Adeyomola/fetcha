@@ -23,8 +23,9 @@ def pages(identifier):
         connection.commit()
     
     select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
-    # select_countries = text("SELECT column_name FROM information_schema.columns WHERE table_name = 'insights';")
     countries = connection.execute(select_countries).fetchall()
+
+    count = connection.execute(text(f"SELECT {location} FROM 'insights' WHERE identifier = '{identifier}'")).fetchone()
 
     print(countries[0][0])
     if location not in countries[0][0]:
@@ -32,6 +33,7 @@ def pages(identifier):
         query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
         connection.execute(text(query))
     elif location in countries[0][0]:
+        # count = count + 1
         query = f'UPDATE insights SET {location} = + 1 WHERE identifier = "{identifier}";'
         connection.execute(text(query))
         connection.commit()
@@ -49,4 +51,4 @@ def pages(identifier):
         abort (404, f'Link does not exist')
     else:
         identifier = links[2].replace("-", " ")
-    return render_template('pages.html', links=links, identifier=identifier, countries=countries) #available_days = available_days[2]
+    return render_template('pages.html', links=links, identifier=identifier, count=count) #available_days = available_days[2]
