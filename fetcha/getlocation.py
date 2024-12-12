@@ -17,4 +17,4 @@ class GetLocation:
         data = ip_info.json()
         location = data.get('country', 'Unknown')
         
-        return location
+        return [location, ip]
