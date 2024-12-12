@@ -23,10 +23,10 @@ def pages(identifier):
         connection.commit()
     
     # select_countries = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'user_data'  AND TABLE_NAME = 'insights';"
-    select_countries = "select group_concat(`column_name` separator ',') from information_schema.columns where table_name = 'insights';"
+    select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
     print(select_countries)
 
-    countries = connection.execute(text(select_countries)).fetchall()
+    countries = connection.execute(select_countries).fetchall()
     print(countries)
 
     # if location not in countries:
