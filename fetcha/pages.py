@@ -27,9 +27,9 @@ def pages(identifier):
     countries = connection.execute(select_countries).fetchone()
     
     if location not in countries:
+        print('True')
         query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
         connection.execute(text(query))
-        connection.close()
     else:
         query = f'UPDATE insights SET {location} = {location} + 1 WHERE identifier = {identifier};'
         connection.execute(text(query))
@@ -39,6 +39,7 @@ def pages(identifier):
     # schedule_table = md.tables['schedule']
     # get_available_days = (select(schedule_table).join_from(md.tables['users'], schedule_table))
     # available_days = connection.execute(get_available_days).fetchone()
+
     table = md.tables['links']
     statement = (select(table).where(table.c.identifier == identifier))
     links = connection.execute(statement).fetchone()
