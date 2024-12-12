@@ -11,16 +11,8 @@ md = metadata()
 
 @bp.route('/<identifier>')
 def pages(identifier):
-    table = md.tables['links']
+    
     connection = get_db()
-
-    statement = (select(table).where(table.c.identifier == identifier))
-    links = connection.execute(statement).fetchone()
-
-    if links is None:
-        abort (404, f'Link does not exist')
-    else:
-        identifier = links[2].replace("-", " ")
 
     # location stuff
     location = GetLocation.get_location()
@@ -44,15 +36,21 @@ def pages(identifier):
         connection.commit()
     else:
         query = f'ALTER TABLE insights ADD {location} varchar(10);'
-        query_2 = f'INSERT INTO insights ({location}) VALUES (1));'
         connection.execute(text(query))
+        query_2 = f'INSERT INTO insights ({location}) VALUES (1));'
         connection.execute(text(query_2))
         connection.commit()
         connection.close()
 
-    # countries = connection.execute(statement).fetchone()
     # schedule_table = md.tables['schedule']
     # get_available_days = (select(schedule_table).join_from(md.tables['users'], schedule_table))
     # available_days = connection.execute(get_available_days).fetchone()
-    
+    table = md.tables['links']
+    statement = (select(table).where(table.c.identifier == identifier))
+    links = connection.execute(statement).fetchone()
+
+    if links is None:
+        abort (404, f'Link does not exist')
+    else:
+        identifier = links[2].replace("-", " ")
     return render_template('pages.html', links=links, identifier=identifier, location=location) #available_days = available_days[2]
