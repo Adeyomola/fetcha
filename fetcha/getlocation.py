@@ -9,7 +9,7 @@ class GetLocation:
 
     def get_location():
         if request.headers.getlist("X-Forwarded-For"):
-            ip = request.headers.getlist("X-Forwarded-For")
+            ip = request.headers.getlist("X-Forwarded-For")[0]
         else:
             ip = request.remote_addr
 
@@ -17,4 +17,4 @@ class GetLocation:
         data = ip_info.json()
         location = data.get('country', 'Unknown')
         
-        return [location, ip]
+        return location

@@ -17,8 +17,7 @@ def pages(identifier):
     statement = (select(table).where(table.c.identifier == identifier))
     links = connection.execute(statement).fetchone()
 
-    location = GetLocation.get_location()[0]
-    ip = GetLocation.get_location()[1]
+    location = GetLocation.get_location()
 
     # schedule_table = md.tables['schedule']
     # get_available_days = (select(schedule_table).join_from(md.tables['users'], schedule_table))
@@ -28,4 +27,4 @@ def pages(identifier):
         abort (404, f'Link does not exist')
     else:
         identifier = links[2].replace("-", " ")
-    return render_template('pages.html', links=links, identifier=identifier, location=location, ip=ip) #available_days = available_days[2]
+    return render_template('pages.html', links=links, identifier=identifier, location=location) #available_days = available_days[2]
