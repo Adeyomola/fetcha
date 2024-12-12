@@ -26,7 +26,7 @@ def insights(identifier='third'):
     countries = list(countries)
     countries = ''.join(countries)
     countries = countries.split()
-    countries.remove('identifier')
+    # countries.remove('identifier')
 
 
 
