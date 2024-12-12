@@ -9,9 +9,8 @@ from .getlocation import GetLocation
 bp = Blueprint('pages', __name__)
 md = metadata()
 
-@bp.route('/<identifier>')
-def pages(identifier):
-    
+@bp.route('/<identifier>', methods=['GET', 'POST'])
+def pages(identifier):    
     connection = get_db()
 
     # location stuff
@@ -19,10 +18,9 @@ def pages(identifier):
     insights_table = md.tables['insights']
 
     if not connection.execute(select(insights_table.c.identifier)).fetchone():
-        statement = (insert(insights_table).values(identifier=identifier))
-        connection.execute(statement)
-    else:
-        return
+        connection.execute((insert(insights_table).values(identifier=identifier)))
+        connection.commit()
+        
 
     select_countries = (select(insights_table).where(insights_table.c.identifier == identifier))
     countries = connection.execute(select_countries).fetchone()
