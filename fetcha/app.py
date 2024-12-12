@@ -28,8 +28,8 @@ def create_app():
     from . import create
     app.register_blueprint(create.bp)
 
-    from . import goto
-    app.register_blueprint(goto.bp)
+    from . import pages
+    app.register_blueprint(pages.bp)
 
     from . import schedule
     app.register_blueprint(schedule.bp)
