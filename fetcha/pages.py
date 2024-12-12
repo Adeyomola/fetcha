@@ -22,18 +22,19 @@ def pages(identifier):
     #     connection.execute((insert(insights_table).values(identifier=identifier)))
     #     connection.commit()
     
-    # select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
-    select_countries = text("SELECT column_name FROM information_schema.columns WHERE table_name = 'insights';")
+    select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
+    # select_countries = text("SELECT column_name FROM information_schema.columns WHERE table_name = 'insights';")
     countries = connection.execute(select_countries).fetchall()
-    
-    # if location not in countries[0]:
-    #     print ('True')
-    #     query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
-    #     connection.execute(text(query))
-    # elif location in countries[0]:
-    #     query = f'UPDATE insights SET {location} = + 1 WHERE identifier = {identifier};'
-    #     connection.execute(text(query))
-    #     connection.commit()
+
+    print(countries[0][0])
+    if location not in countries[0][0]:
+        print ('True')
+        query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
+        connection.execute(text(query))
+    elif location in countries[0][0]:
+        query = f'UPDATE insights SET {location} = + 1 WHERE identifier = {identifier};'
+        connection.execute(text(query))
+        connection.commit()
 
 
     # schedule_table = md.tables['schedule']
