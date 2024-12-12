@@ -19,7 +19,8 @@ def create_app():
     app=Flask(__name__)
     app.config.from_mapping(
         ENGINE= create_engine(f"mysql://{db_user}:{db_password}@{host}/{db_name}"),
-        SECRET_KEY=secret_key
+        SECRET_KEY=secret_key,
+        DEBUG= True
     )
 
     from . import auth
