@@ -23,7 +23,7 @@ def insights(identifier='third'):
     # select_countries = text("SELECT name FROM pragma_table_info('insights')")
     countries = connection.execute(select_countries).fetchall()[0]
 
-    countries = filter(filter_function, countries)
+    countries = list(countries)
 
 
 
