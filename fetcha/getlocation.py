@@ -15,6 +15,6 @@ class GetLocation:
 
         ip_info = requests.get(f'https://ipinfo.io/{ip}/json')
         data = ip_info.json()
-        location = data['country']
+        # location = data['country']
         
-        return location
+        return data
