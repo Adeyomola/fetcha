@@ -35,10 +35,8 @@ def pages(identifier):
         connection.execute(text(query))
         connection.commit()
     else:
-        query = f'ALTER TABLE insights ADD {location} varchar(10);'
+        query = f'ALTER TABLE insights ADD {location} varchar(10) SET DEFAULT 1;'
         connection.execute(text(query))
-        query_2 = f'INSERT INTO insights ({location}) VALUES (1));'
-        connection.execute(text(query_2))
         connection.commit()
         connection.close()
 
