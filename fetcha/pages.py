@@ -25,14 +25,15 @@ def pages(identifier):
     select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
     countries = connection.execute(select_countries).fetchall()
 
-    count = connection.execute(text(f"SELECT {location} FROM insights WHERE identifier = '{identifier}'")).fetchone()
+    count = connection.execute(text(f"SELECT {location} FROM insights WHERE identifier = '{identifier}'")).fetchone()[0]
+    count = int(count)
 
     if location not in countries[0][0]:
         print ('True')
         query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
         connection.execute(text(query))
     elif location in countries[0][0]:
-        # count = count + 1
+        count = count + 1
         query = f'UPDATE insights SET {location} = + 1 WHERE identifier = "{identifier}";'
         connection.execute(text(query))
         connection.commit()
