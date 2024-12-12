@@ -15,12 +15,6 @@ def pages(identifier):
 
     # location stuff
     location = GetLocation.get_location()
-    insights_table = md.tables['insights']
-
-        # checks if insights has identifier and inserts if it doesn't
-    if not connection.execute(select(insights_table.c.identifier)).fetchone():
-        connection.execute((insert(insights_table).values(identifier=identifier)))
-        connection.commit()
     
     select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
     countries = connection.execute(select_countries).fetchall()
@@ -33,7 +27,7 @@ def pages(identifier):
         count = connection.execute(text(f"SELECT {location} FROM insights WHERE identifier = '{identifier}'")).fetchone()[0]
         count = int(count)
         count = count + 1
-        
+
         query = f'UPDATE insights SET {location} = {count} WHERE identifier = "{identifier}";'
         connection.execute(text(query))
         connection.commit()

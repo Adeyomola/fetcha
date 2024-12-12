@@ -58,6 +58,11 @@ def create():
                                                     fg_color=foreground_color, image=image_url))
                 connection.execute(statement)
                 connection.commit()
+
+                # adds identifier to insights table
+                insights_table = md.tables['insights']
+                connection.execute((insert(insights_table).values(identifier=identifier)))
+                connection.commit()
                 return render_template('create.html', custom_link=f"https://fetcha.link/{identifier}")
             except IntegrityError as ie:
                 error = ie._message()
