@@ -13,9 +13,9 @@ md = metadata()
 def insights(identifier='third'):    
     connection = get_db()
     
-    select_countries = text("SELECT column_name FROM information_schema.columns WHERE table_name = 'insights';")
+    select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ',') FROM information_schema.columns WHERE table_name = 'insights';")
     # select_countries = text("SELECT name FROM pragma_table_info('insights')")
-    countries = connection.execute(select_countries).fetchall()
+    countries = connection.execute(select_countries).fetchall()[1:]
 
 
     # select_counts = text(f"SELECT {countries} FROM insights WHERE identifier='{identifier}'")
