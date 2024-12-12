@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint, g
 from .metadata import metadata
 from .db import get_db
-from sqlalchemy import select, insert, update
+from sqlalchemy import select, insert, text
 from werkzeug.exceptions import abort
 from .getlocation import GetLocation
 
@@ -35,13 +35,13 @@ def pages(identifier):
     
     if location in countries:
         query = f'UPDATE insights SET {location} = {location} + 1 WHERE identifier = {identifier};'
-        connection.execute(query)
+        connection.execute(text(query))
         connection.commit()
     else:
         query = f'ALTER TABLE insights ADD {location} varchar(10);'
-        connection.execute(query)
+        connection.execute(text(query))
         query = f'INSERT INTO insights ({location} VALUES(1));'
-        connection.execute(query)
+        connection.execute(text(query))
 
     # countries = connection.execute(statement).fetchone()
     # schedule_table = md.tables['schedule']
