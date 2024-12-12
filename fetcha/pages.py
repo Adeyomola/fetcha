@@ -29,7 +29,6 @@ def pages(identifier):
     if location not in countries:
         query = f'ALTER TABLE insights ADD {location} varchar(10) DEFAULT 1;'
         connection.execute(text(query))
-        connection.commit()
         connection.close()
     else:
         query = f'UPDATE insights SET {location} = {location} + 1 WHERE identifier = {identifier};'
