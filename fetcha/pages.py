@@ -40,7 +40,7 @@ def pages(identifier):
     else:
         query = f'ALTER TABLE insights ADD {location} varchar(10);'
         connection.execute(text(query))
-        query = f'INSERT INTO insights ({location} VALUES(1));'
+        query = f'INSERT INTO insights ({location}) VALUES (1));'
         connection.execute(text(query))
 
     # countries = connection.execute(statement).fetchone()
