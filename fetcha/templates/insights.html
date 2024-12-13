@@ -17,11 +17,11 @@
 </body>
 <script>
     const xValues = document.getElementById("countries").value.split(',')
-    const yValues = Array.from(Number(document.getElementById("counts").value))
+    const yValues = document.getElementById("counts").value
     const barColors = ["red", "green", "blue", "orange", "brown"];
 
     console.log(xValues)
-    console.log(yValues)
+    console.log(typeof (yValues))
 
     new Chart("myChart", {
         type: "bar",
