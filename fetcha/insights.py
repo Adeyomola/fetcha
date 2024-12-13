@@ -34,7 +34,7 @@ def insights(identifier='butterskinned'):
     select_counts = text(f"SELECT {countries_string} FROM insights WHERE identifier='{identifier}'")
     counts = connection.execute(select_counts).fetchall()[0]
     counts = list(counts)
-    counts = list(map(int, counts))
+    counts = map(int, counts)
 
 
-    return render_template('insights.html', identifier=identifier, counts=counts, countries=countries) #available_days = available_days[2]
+    return render_template('insights.html', identifier=identifier, counts=counts, countries=countries_string) #available_days = available_days[2]

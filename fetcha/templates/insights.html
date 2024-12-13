@@ -16,8 +16,8 @@
     <input type="text" name="" id="countries" value="{{countries}}" hidden>
 </body>
 <script>
-    const xValues = document.getElementById("countries").value
-    const yValues = document.getElementById("counts").value
+    const xValues = Array.from(document.getElementById("countries").value)
+    const yValues = Array.from(document.getElementById("counts").value)
     const barColors = ["red", "green", "blue", "orange", "brown"];
 
     console.log(xValues)
