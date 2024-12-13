@@ -25,10 +25,18 @@
         y: yValues,
         type: "bar",
         orientation: "v",
-        marker: { color: "rgba(11,24,43)" }
+        marker: { color: "rgb(11,24,43)" }
     }];
 
-    const layout = { title: "Clicks by Country", barcornerradius: 10, bargap: 0.5 };
+    const layout = {
+        title: "Clicks by Country",
+        xaxis: {
+            title: {
+                text: 'Number of Clicks'
+            }
+        }, barcornerradius: 10,
+        bargap: 0.5
+    };
 
     Plotly.newPlot("myPlot", data, layout)
     // new Chart("myChart", {
