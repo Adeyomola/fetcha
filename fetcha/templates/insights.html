@@ -18,6 +18,7 @@
     const xValues = document.getElementById("countries").value.split(',')
     const yValues = document.getElementById("counts").value
     const barColors = ["red", "green", "blue", "orange", "brown"];
+    console.log(typeof(yValues))
 
     new Chart("myChart", {
         type: "bar",
