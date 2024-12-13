@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <canvas id="myChart" style="width:100%;max-width:200px"></canvas>
+    <canvas id="myChart" style="width:100%; height:100%; max-width: 500px"></canvas>
     <input type="number" name="" id="counts" value="{{counts}}" hidden>
     <input type="text" name="" id="countries" value="{{countries}}" hidden>
 </body>
@@ -18,7 +18,7 @@
     const xValues = document.getElementById("countries").value.split(',')
     const yValues = document.getElementById("counts").value
     const barColors = ["red", "green", "blue", "orange", "brown"];
-    console.log(typeof(yValues))
+    console.log(typeof yValues)
 
     new Chart("myChart", {
         type: "bar",
