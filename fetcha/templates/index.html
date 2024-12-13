@@ -113,6 +113,7 @@
                     <button id="edit-delete" type="submit" onclick="return confirm ('Are you sure?')" value="Delete"><i
                             class="fa fa-trash" style="margin-right: 10px;"></i>Delete</button>
                 </form>
+                <a href="{{url_for('insights.insights', identifier=link['identifier'])}}" id="edit-delete">Insights</a>
             </div>
         </div>
         {% endfor %}

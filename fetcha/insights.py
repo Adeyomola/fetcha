@@ -1,15 +1,16 @@
 from flask import render_template, Blueprint, g
 from .metadata import metadata
 from .db import get_db
-from sqlalchemy import select, insert, text
+from sqlalchemy import text
 from werkzeug.exceptions import abort
-from .getlocation import GetLocation
+from .auth import login_required
 
 
 bp = Blueprint('insights', __name__)
 md = metadata()
 
 @bp.route('/insights/<identifier>', methods=['GET', 'POST'])
+@login_required
 def insights(identifier):    
     connection = get_db()
     
