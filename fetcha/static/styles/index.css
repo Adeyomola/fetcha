@@ -144,7 +144,8 @@ h3 {
     margin-left: 10px;
 }
 
-#edit-delete {
+#edit-delete,
+#insights {
     font-family: 'Quicksand';
     width: fit-content;
     margin: 2px;
@@ -153,6 +154,10 @@ h3 {
     border-radius: 0.2rem;
     background-color: #0b182b;
     border: none;
+}
+
+#insights {
+    padding: 8px;
 }
 
 a {

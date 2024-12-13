@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/insights.css') }}">
     <title>{{identifier[0]|upper}}{{identifier[1:]}}</title>
 </head>
 
 <body>
-    <!-- <canvas id="myChart" style="width:100%; max-width: 500px"></canvas> -->
     <div id="myPlot" style="width:100%;max-width:700px"></div>
     <input type="text" name="" id="counts" value="{{counts}}" hidden>
     <input type="text" name="" id="countries" value="{{countries}}" hidden>
@@ -39,31 +39,6 @@
     };
 
     Plotly.newPlot("myPlot", data, layout)
-    // new Chart("myChart", {
-    //     type: "bar",
-    //     data: {
-    //         labels: xValues,
-    //         datasets: [{
-    //             backgroundColor: barColors,
-    //             data: yValues
-    //         }]
-    //     },
-    //     options: {
-    //         legend: { display: false },
-    //         title: {
-    //             display: true,
-    //             text: ""
-    //         },
-    //         scales: {
-    //             yAxes: [{
-    //                 ticks: {
-    //                     beginAtZero: true
-    //                 }
-    //             }]
-    //         }
-    //     }
-
-    // });
 </script>
 
 </html>
