@@ -12,10 +12,12 @@
     {{counts}}
     {{countries}}
     <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    <input type="number" name="" id="counts" value="{{counts}}" hidden>
+    <input type="text" name="" id="countries" value="{{countries}}" hidden>
 </body>
 <script>
-    const xValues = {{countries}}
-    const yValues = {{counts}}
+    const xValues = document.getElementById("countries").value
+    const yValues = document.getElementById("counts").value
     const barColors = ["red", "green", "blue", "orange", "brown"];
 
     new Chart("myChart", {
