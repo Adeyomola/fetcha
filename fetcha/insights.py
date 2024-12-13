@@ -9,12 +9,6 @@ from .getlocation import GetLocation
 bp = Blueprint('insights', __name__)
 md = metadata()
 
-def filter_function(column):
-    if column == 'identifier':
-        return False
-    else:
-        return True
-    
 @bp.route('/insights/<identifier>', methods=['GET', 'POST'])
 def insights(identifier):    
     connection = get_db()
@@ -34,7 +28,6 @@ def insights(identifier):
     counts = connection.execute(select_counts).fetchall()[0]
     counts = list(counts)
     counts = ', '.join(counts)
-    # counts = counts.replace("'", "")
 
 
-    return render_template('insights.html', identifier=identifier, counts=counts, countries=countries_string) #available_days = available_days[2]
+    return render_template('insights.html', identifier=identifier, counts=counts, countries=countries_string)
