@@ -36,6 +36,7 @@ def insights(identifier):
     counts = ''.join(counts)
     counts = counts.replace(",", "")
     counts = counts.replace("'", "")
+    counts = ', '.join(counts)
 
 
     return render_template('insights.html', identifier=identifier, counts=counts, countries=countries_string) #available_days = available_days[2]
