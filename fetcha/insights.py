@@ -15,8 +15,8 @@ def filter_function(column):
     else:
         return True
     
-@bp.route('/insights', methods=['GET', 'POST'])
-def insights(identifier='butterskinned'):    
+@bp.route('/insights/<identifier>', methods=['GET', 'POST'])
+def insights(identifier):    
     connection = get_db()
     
     select_countries = text("SELECT GROUP_CONCAT(`column_name` separator ', ') FROM information_schema.columns WHERE table_name = 'insights';")

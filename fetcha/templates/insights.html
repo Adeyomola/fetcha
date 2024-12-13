@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <title>Insights</title>
+    <title>{{identifier}}</title>
 </head>
 
 <body>
-    {{counts}}
-    {{countries}}
-    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    <canvas id="myChart" style="width:100%;max-width:200px"></canvas>
     <input type="number" name="" id="counts" value="{{counts}}" hidden>
     <input type="text" name="" id="countries" value="{{countries}}" hidden>
 </body>
@@ -19,9 +17,6 @@
     const xValues = document.getElementById("countries").value.split(',')
     const yValues = document.getElementById("counts").value
     const barColors = ["red", "green", "blue", "orange", "brown"];
-
-    console.log(xValues)
-    console.log(yValues)
 
     new Chart("myChart", {
         type: "bar",
@@ -36,7 +31,7 @@
             legend: { display: false },
             title: {
                 display: true,
-                text: "Test"
+                text: 
             },
             scales: {
                 yAxes: [{
