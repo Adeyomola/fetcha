@@ -29,10 +29,11 @@ def insights(identifier='butterskinned'):
     countries = countries.split()
     countries.remove('identifier')
 
-    countries = ', '.join(countries)
+    countries_string = ', '.join(countries)
 
-    select_counts = text(f"SELECT {countries} FROM insights WHERE identifier='{identifier}'")
-    counts = connection.execute(select_counts).fetchall()
+    select_counts = text(f"SELECT {countries_string} FROM insights WHERE identifier='{identifier}'")
+    counts = connection.execute(select_counts).fetchall()[0]
+    counts = list(counts)
 
 
     return render_template('insights.html', identifier=identifier, counts=counts, countries=countries) #available_days = available_days[2]
