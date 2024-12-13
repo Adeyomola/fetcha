@@ -10,13 +10,13 @@
 </head>
 
 <body>
-    <canvas id="myChart" style="width:100%; height:100%; max-width: 500px"></canvas>
+    <canvas id="myChart" style="width:100%; max-width: 500px"></canvas>
     <input type="number" name="" id="counts" value="{{counts}}" hidden>
     <input type="text" name="" id="countries" value="{{countries}}" hidden>
 </body>
 <script>
     const xValues = document.getElementById("countries").value.split(',')
-    let y = document.getElementById("counts").value
+    let y = document.getElementById("counts")
     let z = y.split(',').map(Number)
     const yValues = z
     const barColors = ["red", "green", "blue", "orange", "brown"];

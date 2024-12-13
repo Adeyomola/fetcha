@@ -34,7 +34,7 @@ def insights(identifier):
     counts = connection.execute(select_counts).fetchall()[0]
     counts = list(counts)
     counts = ', '.join(counts)
-    counts = counts.replace("'", "")
+    # counts = counts.replace("'", "")
 
 
     return render_template('insights.html', identifier=identifier, counts=counts, countries=countries_string) #available_days = available_days[2]
