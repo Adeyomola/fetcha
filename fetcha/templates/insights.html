@@ -16,9 +16,11 @@
 </body>
 <script>
     const xValues = document.getElementById("countries").value.split(',')
-    const yValues = document.getElementById("counts").value.split(',')
+    const yValues = document.getElementById("counts").value.split(',').map(Number)
     const barColors = ["red", "green", "blue", "orange", "brown"];
     console.log(typeof yValues)
+    console.log(yValues)
+    console.log(xValues)
 
     new Chart("myChart", {
         type: "bar",
