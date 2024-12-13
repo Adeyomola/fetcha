@@ -85,6 +85,7 @@ def delete_link(identifier):
     
     connection = get_db()
     table = md.tables['links']
+    insights_table = md.tables['links']
     
     image = connection.execute((select(table.c.image).where(table.c.identifier == identifier))).fetchone()[0]
 
@@ -92,6 +93,9 @@ def delete_link(identifier):
         Upload.delete_file(image)
 
     connection.execute(delete(table).where(table.c.identifier == identifier))
+    connection.commit()
+
+    connection.execute(delete(insights_table).where(insights_table.c.identifier == identifier))
     connection.commit()
     connection.close()
 
