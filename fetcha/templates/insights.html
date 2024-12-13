@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>Insights</title>
 </head>
 
@@ -11,5 +12,27 @@
     {{counts}}
     {{countries}}
 </body>
+<script>
+    const xValues = {{countries}}
+    const yValues = {{counts}}
+    const barColors = ["red", "green", "blue", "orange", "brown"];
 
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: "Test"
+            }
+        }
+    });
+</script>
 </html>
