@@ -36,5 +36,7 @@ def insights(identifier):
     counts = list(counts)
     counts = ', '.join(counts)
 
+    countries = [abbreviation.replace(abbreviation, iso3166[abbreviation]) for abbreviation in countries]
+    countries_in_full = ', '.join(countries)
 
-    return render_template('insights.html', identifier=identifier, counts=counts, countries=countries_string)
+    return render_template('insights.html', identifier=identifier, counts=counts, countries=countries_in_full)
