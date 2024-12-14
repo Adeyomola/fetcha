@@ -26,9 +26,7 @@ def insights(identifier):
     countries = countries.replace(",", "")
     countries = countries.split()
     countries.remove('identifier')
-
-    countries = [abbreviation.replace(abbreviation, iso3166[abbreviation]) for abbreviation in countries]
-
+    
     countries_string = ', '.join(countries)
 
     select_counts = text(f"SELECT {countries_string} FROM insights WHERE identifier='{identifier}'")
