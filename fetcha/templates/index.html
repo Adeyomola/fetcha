@@ -128,8 +128,9 @@
 <script>
 
     const insights_url = {{ url_for('insights.insights', identifier = link['identifier']) | tojson }}
+
     function show_insights() {
-        fetch(_url)
+        fetch(insights_url)
             .then((res) => res.json())
             .then((insights) => {
                 xValues = insights.countries;
