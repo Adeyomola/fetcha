@@ -127,9 +127,9 @@
 </body>
 <script>
 
-    function show_insights(identifier) {
+    function show_insights(path) {
 
-        const insights_url = {{ url_for('insights.insights', identifier = identifier) | tojson
+        const insights_url = {{ url_for('insights.insights', identifier = path) | tojson
     }}
 
     fetch(insights_url)
