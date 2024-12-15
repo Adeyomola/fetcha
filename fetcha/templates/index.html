@@ -128,6 +128,7 @@
 <script>
 
     function show_insights(path) {
+        console.log(path)
 
         const insights_url = {{ url_for('insights.insights', identifier = path) | tojson
     }}
@@ -167,7 +168,10 @@
             const myPlot = document.getElementById('myPlot');
             myPlot.toggleAttribute('hidden')
             Plotly.newPlot("myPlot", data, layout);
-        });
+        })
+        // .catch(error => {
+        //     console.error('Error fetching data:', error);
+        // });
     }
 
 
