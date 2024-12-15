@@ -118,8 +118,8 @@
                     method="post">
                     <button id="edit-delete" type="submit" onclick="return confirm ('Are you sure?')" value="Delete"><i
                             class="fa fa-trash" style="margin-right: 10px;"></i>Delete</button>
-                    <div onclick="show_insights('{{link['identifier']}}')" id="insights"><i class="fa fa-bar-chart"
-                            style="margin-right: 10px;"></i>Insights
+                    <div onclick="show_insights('{{link['identifier'][0]|upper}}{{link['identifier'][1:]}}')"
+                        id="insights"><i class="fa fa-bar-chart" style="margin-right: 10px;"></i>Insights
                     </div>
                 </form>
             </div>
@@ -159,7 +159,7 @@
                 ];
 
                 const layout = {
-                    title: `Clicks by Country - ${path.charAt(0).toUppercase() + path.slice(1)}`,
+                    title: `Clicks by Country - ${path}`,
                     yaxis: {
                         title: {
                             text: "Number of Clicks",
