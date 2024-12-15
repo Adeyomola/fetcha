@@ -116,7 +116,11 @@
                     <div onclick="show_insights('{{link['identifier']}}')" id="insights"><i class="fa fa-bar-chart"
                             style="margin-right: 10px;"></i>Insights
                     </div>
-                    <div id="myPlot" style="width:100%; max-width:700px; height: max-content;" hidden></div>
+                    <div id="myPlot" style="width:100%; max-width:700px; height: max-content;" hidden></span>
+                        <span id="close_modal">
+                            &times;
+                        </span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -126,6 +130,13 @@
 
 </body>
 <script>
+    const myPlot = document.getElementById('myPlot');
+
+    if (close_modal) {
+        close_modal.onclick = () => {
+            myPlot.style.display = "none";
+        };
+    }
 
     function show_insights(path) {
 
@@ -157,7 +168,6 @@
                     barcornerradius: 10,
                     bargap: 0.5,
                 };
-                const myPlot = document.getElementById('myPlot');
                 myPlot.toggleAttribute('hidden')
                 Plotly.newPlot("myPlot", data, layout);
             })
