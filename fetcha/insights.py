@@ -26,15 +26,15 @@ def insights(identifier):
     countries = countries.replace(",", "")
     countries = countries.split()
     countries.remove('identifier')
-    
+
     countries_string = ', '.join(countries)
 
     select_counts = text(f"SELECT {countries_string} FROM insights WHERE identifier='{identifier}'")
     counts = connection.execute(select_counts).fetchall()[0]
     counts = list(counts)
-    counts = ', '.join(counts)
+    # counts = ', '.join(counts)
 
     countries = [abbreviation.replace(abbreviation, iso3166[abbreviation]) for abbreviation in countries]
-    countries_in_full = ', '.join(countries)
+    # countries_in_full = ', '.join(countries)
 
-    return render_template('insights.html', identifier=identifier, counts=counts, countries=countries_in_full)
+    return  {"identifier": identifier, "counts": counts, "countries": countries}

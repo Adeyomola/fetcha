@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/insights.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/insights.css') }}">
     <title>{{identifier[0]|upper}}{{identifier[1:]}}</title>
 </head>
 
@@ -16,29 +16,45 @@
     <input type="text" name="" id="countries" value="{{countries}}" hidden>
 </body>
 <script>
-    const xValues = document.getElementById("countries").value.split(',')
-    const yValues = document.getElementById("counts").value.split(',').map(Number)
-    const barColors = ["red", "green", "blue", "orange", "brown"];
 
-    const data = [{
-        x: xValues,
-        y: yValues,
-        type: "bar",
-        orientation: "v",
-        marker: { color: "rgb(11,24,43)" }
-    }];
+    const insights_url = {{ url_for('insights.insights', identifier = link['identifier']) | tojson }}
 
-    const layout = {
-        title: "Clicks by Country",
-        yaxis: {
-            title: {
-                text: 'Number of Clicks'
-            }
-        }, barcornerradius: 10,
-        bargap: 0.5
-    };
+    fetch(insights_url)
+        .then((res) => res.json())
+        .then((insights) => {
+            xValues = insights.countries;
+            yValues = insights.counts.map(Number);
 
-    Plotly.newPlot("myPlot", data, layout)
+            console.log(yValues);
+            console.log(xValues);
+
+            console.log(typeof yValues)
+            console.log(typeof xValues)
+
+            const data = [
+                {
+                    x: xValues,
+                    y: yValues,
+                    type: "bar",
+                    orientation: "v",
+                    marker: { color: "rgb(11,24,43)" },
+                },
+            ];
+
+            const layout = {
+                title: "Clicks by Country",
+                yaxis: {
+                    title: {
+                        text: "Number of Clicks",
+                    },
+                },
+                barcornerradius: 10,
+                bargap: 0.5,
+            };
+
+            Plotly.newPlot("myPlot", data, layout);
+        });
+
 </script>
 
 </html>
