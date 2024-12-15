@@ -114,7 +114,7 @@
                             class="fa fa-trash" style="margin-right: 10px;"></i>Delete</button>
                     <!-- <a href="{{url_for('insights.insights', identifier=link['identifier'])}}" id="insights"><i
                             class="fa fa-bar-chart" style="margin-right: 10px;"></i>Insights</a> -->
-                    <div onclick="show_insights()">
+                    <div onclick="show_insights({{link['identifier']}})">
                         id="insights"><i class="fa fa-bar-chart" style="margin-right: 10px;"></i>Insights
                     </div>
                 </form>
@@ -127,45 +127,46 @@
 </body>
 <script>
 
-    const insights_url = {{ url_for('insights.insights', identifier = link['identifier']) | tojson }}
+    function show_insights(identifier) {
 
-    function show_insights() {
-        fetch(insights_url)
-            .then((res) => res.json())
-            .then((insights) => {
-                xValues = insights.countries;
-                yValues = insights.counts.map(Number);
+    const insights_url = {{ url_for('insights.insights', identifier = identifier) | tojson }}
 
-                console.log(yValues);
-                console.log(xValues);
+    fetch(insights_url)
+        .then((res) => res.json())
+        .then((insights) => {
+            xValues = insights.countries;
+            yValues = insights.counts.map(Number);
 
-                console.log(typeof yValues)
-                console.log(typeof xValues)
+            console.log(yValues);
+            console.log(xValues);
 
-                const data = [
-                    {
-                        x: xValues,
-                        y: yValues,
-                        type: "bar",
-                        orientation: "v",
-                        marker: { color: "rgb(11,24,43)" },
+            console.log(typeof yValues)
+            console.log(typeof xValues)
+
+            const data = [
+                {
+                    x: xValues,
+                    y: yValues,
+                    type: "bar",
+                    orientation: "v",
+                    marker: { color: "rgb(11,24,43)" },
+                },
+            ];
+
+            const layout = {
+                title: "Clicks by Country",
+                yaxis: {
+                    title: {
+                        text: "Number of Clicks",
                     },
-                ];
-
-                const layout = {
-                    title: "Clicks by Country",
-                    yaxis: {
-                        title: {
-                            text: "Number of Clicks",
-                        },
-                    },
-                    barcornerradius: 10,
-                    bargap: 0.5,
-                };
-                const myPlot = document.getElementById('myPlot');
-                myPlot.toggleAttribute('hidden')
-                Plotly.newPlot("myPlot", data, layout);
-            });
+                },
+                barcornerradius: 10,
+                bargap: 0.5,
+            };
+            const myPlot = document.getElementById('myPlot');
+            myPlot.toggleAttribute('hidden')
+            Plotly.newPlot("myPlot", data, layout);
+        });
     }
 
 
