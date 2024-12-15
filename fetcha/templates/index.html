@@ -112,14 +112,62 @@
                     method="post">
                     <button id="edit-delete" type="submit" onclick="return confirm ('Are you sure?')" value="Delete"><i
                             class="fa fa-trash" style="margin-right: 10px;"></i>Delete</button>
-                    <a href="{{url_for('insights.insights', identifier=link['identifier'])}}" id="insights"><i
-                            class="fa fa-bar-chart" style="margin-right: 10px;"></i>Insights</a>
+                    <!-- <a href="{{url_for('insights.insights', identifier=link['identifier'])}}" id="insights"><i
+                            class="fa fa-bar-chart" style="margin-right: 10px;"></i>Insights</a> -->
+                    <div onclick="show_insights()">
+                        id="insights"><i class="fa fa-bar-chart" style="margin-right: 10px;"></i>Insights
+                    </div>
                 </form>
             </div>
         </div>
         {% endfor %}
     </div>
     {% endif %}
+    <div id="myPlot" style="width:100%; max-width:700px; height: 100vh;" hidden></div>
 </body>
+<script>
+
+    const insights_url = {{ url_for('insights.insights', identifier = link['identifier']) | tojson }}
+    function show_insights() {
+        fetch(_url)
+            .then((res) => res.json())
+            .then((insights) => {
+                xValues = insights.countries;
+                yValues = insights.counts.map(Number);
+
+                console.log(yValues);
+                console.log(xValues);
+
+                console.log(typeof yValues)
+                console.log(typeof xValues)
+
+                const data = [
+                    {
+                        x: xValues,
+                        y: yValues,
+                        type: "bar",
+                        orientation: "v",
+                        marker: { color: "rgb(11,24,43)" },
+                    },
+                ];
+
+                const layout = {
+                    title: "Clicks by Country",
+                    yaxis: {
+                        title: {
+                            text: "Number of Clicks",
+                        },
+                    },
+                    barcornerradius: 10,
+                    bargap: 0.5,
+                };
+                const myPlot = document.getElementById('myPlot');
+                myPlot.toggleAttribute('hidden')
+                Plotly.newPlot("myPlot", data, layout);
+            });
+    }
+
+
+</script>
 
 </html>
