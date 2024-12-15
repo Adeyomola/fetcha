@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Cabin|Quicksand">
     <script src="{{ url_for('static', filename='scripts/index.js')}}" defer></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>Fetcha</title>
 </head>
 
@@ -136,12 +137,6 @@
             .then((insights) => {
                 xValues = insights.countries;
                 yValues = insights.counts.map(Number);
-
-                console.log(yValues);
-                console.log(xValues);
-
-                console.log(typeof yValues)
-                console.log(typeof xValues)
 
                 const data = [
                     {
