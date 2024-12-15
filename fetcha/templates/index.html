@@ -128,50 +128,48 @@
 <script>
 
     function show_insights(path) {
-        console.log(path)
 
-        const insights_url = {{ url_for('insights.insights', identifier = path) | tojson
-    }}
+        const insights_url = `https://fetcha.link/insights/${path}`
 
-    fetch(insights_url)
-        .then((res) => res.json())
-        .then((insights) => {
-            xValues = insights.countries;
-            yValues = insights.counts.map(Number);
+        fetch(insights_url)
+            .then((res) => res.json())
+            .then((insights) => {
+                xValues = insights.countries;
+                yValues = insights.counts.map(Number);
 
-            console.log(yValues);
-            console.log(xValues);
+                console.log(yValues);
+                console.log(xValues);
 
-            console.log(typeof yValues)
-            console.log(typeof xValues)
+                console.log(typeof yValues)
+                console.log(typeof xValues)
 
-            const data = [
-                {
-                    x: xValues,
-                    y: yValues,
-                    type: "bar",
-                    orientation: "v",
-                    marker: { color: "rgb(11,24,43)" },
-                },
-            ];
-
-            const layout = {
-                title: "Clicks by Country",
-                yaxis: {
-                    title: {
-                        text: "Number of Clicks",
+                const data = [
+                    {
+                        x: xValues,
+                        y: yValues,
+                        type: "bar",
+                        orientation: "v",
+                        marker: { color: "rgb(11,24,43)" },
                     },
-                },
-                barcornerradius: 10,
-                bargap: 0.5,
-            };
-            const myPlot = document.getElementById('myPlot');
-            myPlot.toggleAttribute('hidden')
-            Plotly.newPlot("myPlot", data, layout);
-        })
-        // .catch(error => {
-        //     console.error('Error fetching data:', error);
-        // });
+                ];
+
+                const layout = {
+                    title: "Clicks by Country",
+                    yaxis: {
+                        title: {
+                            text: "Number of Clicks",
+                        },
+                    },
+                    barcornerradius: 10,
+                    bargap: 0.5,
+                };
+                const myPlot = document.getElementById('myPlot');
+                myPlot.toggleAttribute('hidden')
+                Plotly.newPlot("myPlot", data, layout);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
     }
 
 
